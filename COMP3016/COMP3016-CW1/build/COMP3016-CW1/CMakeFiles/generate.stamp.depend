@@ -1,0 +1,7 @@
+# CMake generation dependency list for this directory.
+D:/Program Files/CMake/share/cmake-4.0/Modules/CMakePushCheckState.cmake
+D:/Program Files/CMake/share/cmake-4.0/Modules/FeatureSummary.cmake
+D:/SDL/SDL3.2.24/cmake/SDL3Config.cmake
+D:/SDL/SDL3.2.24/cmake/SDL3ConfigVersion.cmake
+D:/SDL/SDL3.2.24/cmake/sdlcpu.cmake
+G:/git/COMP3016CW1/COMP3016/COMP3016-CW1/COMP3016-CW1/CMakeLists.txt

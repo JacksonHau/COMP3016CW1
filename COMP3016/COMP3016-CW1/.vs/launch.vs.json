@@ -1,0 +1,15 @@
+{
+  "version": "0.2.1",
+  "defaults": {},
+  "configurations": [
+    {
+      "type": "default",
+      "project": "CMakeLists.txt",
+      "projectTarget": "COMP3016-CW1.exe (COMP3016-CW1\\COMP3016-CW1.exe)",
+      "name": "COMP3016-CW1.exe (COMP3016-CW1\\COMP3016-CW1.exe)",
+      "env": {
+        "PATH": "D:\\SDL\\SDL3.2.24\\lib\\x64;%PATH%"
+      }
+    }
+  ]
+}

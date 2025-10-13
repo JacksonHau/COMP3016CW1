@@ -1,0 +1,9 @@
+﻿find_package (SDL3 REQUIRED)
+
+add_executable (COMP3016-CW1 "COMP3016-CW1.cpp" "COMP3016-CW1.h")
+
+if (CMAKE_VERSION VERSION_GREATER 3.12)
+  set_property(TARGET COMP3016-CW1 PROPERTY CXX_STANDARD 20)
+endif()
+
+target_link_libraries(COMP3016-CW1 PRIVATE SDL3::SDL3)
