@@ -1,5 +1,6 @@
 ﻿#include <SDL3/SDL.h>
 #include <SDL3/SDL_main.h>
+#include <SDL3_image/SDL_image.h>
 
 using namespace std;
 
@@ -17,7 +18,7 @@ int main(int argc, char* argv[])
 
 	if (!SDL_Init(SDL_INIT_VIDEO))
 	{
-		SDL_ShowSimpleMessageBox(SDL_MESSAGEBOX_ERROR, "Error", "Error initializing SDL3", nullptr);
+		SDL_ShowSimpleMessageBox(SDL_MESSAGEBOX_ERROR, "Error", "Error initialising SDL3", nullptr);
 		return 1;
 	}
 
@@ -41,6 +42,9 @@ int main(int argc, char* argv[])
 		return 1;
 	}
 
+	// load game assets
+	SDL_Texture* idleTex = IMG_LoadTexture(state.renderer, "data/Pistol Right Walk.png");
+
 	// start the game loop
 	bool running = true;
 	while (running)
@@ -62,10 +66,13 @@ int main(int argc, char* argv[])
 		SDL_SetRenderDrawColor(state.renderer, 255, 255, 255, 255);
 		SDL_RenderClear(state.renderer);
 
+		SDL_RenderTexture(state.renderer, idleTex, nullptr, nullptr);
+
 		// swap buffers and present
 		SDL_RenderPresent(state.renderer);
 	}
 
+	SDL_DestroyTexture(idleTex);
 	cleanup(state);
 	return 0;
 }
