@@ -15,8 +15,10 @@
   },
   "ExpandedNodes": [
     "",
+    "\\build",
     "\\COMP3016-CW1",
-    "\\out"
+    "\\data"
   ],
+  "SelectedNode": "\\data\\assets",
   "PreviewInSolutionExplorer": false
 }
