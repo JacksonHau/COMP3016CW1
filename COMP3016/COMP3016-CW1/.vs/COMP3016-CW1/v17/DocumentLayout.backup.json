@@ -7,6 +7,10 @@
       "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:COMP3016-CW1\\COMP3016-CW1.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|G:\\git\\COMP3016CW1\\COMP3016\\COMP3016-CW1\\COMP3016-CW1\\COMP3016-CW1.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:COMP3016-CW1\\COMP3016-CW1.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|G:\\git\\COMP3016CW1\\COMP3016\\COMP3016-CW1\\COMP3016-CW1\\CMakeLists.txt||{8B382828-6202-11D1-8870-0000F87579D2}",
       "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:COMP3016-CW1\\CMakeLists.txt||{8B382828-6202-11D1-8870-0000F87579D2}"
     },
@@ -22,11 +26,23 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 1,
+              "Title": "COMP3016-CW1.h",
+              "DocumentMoniker": "G:\\git\\COMP3016CW1\\COMP3016\\COMP3016-CW1\\COMP3016-CW1\\COMP3016-CW1.h",
+              "RelativeDocumentMoniker": "COMP3016-CW1\\COMP3016-CW1.h",
+              "ToolTip": "G:\\git\\COMP3016CW1\\COMP3016\\COMP3016-CW1\\COMP3016-CW1\\COMP3016-CW1.h",
+              "RelativeToolTip": "COMP3016-CW1\\COMP3016-CW1.h",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-10-17T15:22:48.232Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
               "Title": "CMakeUserPresets.json",
               "DocumentMoniker": "G:\\git\\COMP3016CW1\\COMP3016\\COMP3016-CW1\\CMakeUserPresets.json",
               "RelativeDocumentMoniker": "CMakeUserPresets.json",
@@ -44,14 +60,14 @@
               "RelativeDocumentMoniker": "COMP3016-CW1\\COMP3016-CW1.cpp",
               "ToolTip": "G:\\git\\COMP3016CW1\\COMP3016\\COMP3016-CW1\\COMP3016-CW1\\COMP3016-CW1.cpp",
               "RelativeToolTip": "COMP3016-CW1\\COMP3016-CW1.cpp",
-              "ViewState": "AgIAALEAAAAAAAAAAAAAAJ4AAABEAAAAAAAAAA==",
+              "ViewState": "AgIAAAIBAAAAAAAAAAAAwBMBAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2025-10-13T13:37:56.214Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "CMakeLists.txt",
               "DocumentMoniker": "G:\\git\\COMP3016CW1\\COMP3016\\COMP3016-CW1\\COMP3016-CW1\\CMakeLists.txt",
               "RelativeDocumentMoniker": "COMP3016-CW1\\CMakeLists.txt",
