@@ -60,12 +60,12 @@
 				{
 					"backtrace" : 2,
 					"isSystem" : true,
-					"path" : "D:/SDL/SDL3.2.24/include"
+					"path" : "E:/SDL/SDL3.2.24/include"
 				},
 				{
 					"backtrace" : 2,
 					"isSystem" : true,
-					"path" : "D:/SDL/SDL3_image-3.2.4/cmake/../include"
+					"path" : "E:/SDL/SDL3_image-3.2.4/cmake/../include"
 				}
 			],
 			"language" : "CXX",
@@ -98,12 +98,12 @@
 			},
 			{
 				"backtrace" : 2,
-				"fragment" : "D:\\SDL\\SDL3.2.24\\lib\\x64\\SDL3.lib",
+				"fragment" : "E:\\SDL\\SDL3.2.24\\lib\\x64\\SDL3.lib",
 				"role" : "libraries"
 			},
 			{
 				"backtrace" : 2,
-				"fragment" : "D:\\SDL\\SDL3_image-3.2.4\\cmake\\..\\lib\\x64\\SDL3_image.lib",
+				"fragment" : "E:\\SDL\\SDL3_image-3.2.4\\cmake\\..\\lib\\x64\\SDL3_image.lib",
 				"role" : "libraries"
 			},
 			{

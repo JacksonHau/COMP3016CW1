@@ -7,7 +7,7 @@ events:
       - "G:/Visual Studio 2022/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.31/Modules/CMakeDetermineSystem.cmake:205 (message)"
       - "CMakeLists.txt:12 (project)"
     message: |
-      The system is: Windows - 10.0.26220 - AMD64
+      The system is: Windows - 10.0.26200 - AMD64
   -
     kind: "message-v1"
     backtrace:
@@ -23,11 +23,11 @@ events:
       
       The output was:
       0
-      Microsoft (R) C/C++ Optimizing Compiler Version 19.44.35217 for x64
+      Microsoft (R) C/C++ Optimizing Compiler Version 19.44.35219 for x64
       Copyright (C) Microsoft Corporation.  All rights reserved.
       
       CMakeCCompilerId.c
-      Microsoft (R) Incremental Linker Version 14.44.35217.0
+      Microsoft (R) Incremental Linker Version 14.44.35219.0
       Copyright (C) Microsoft Corporation.  All rights reserved.
       
       /out:CMakeCCompilerId.exe 
@@ -69,11 +69,11 @@ events:
       
       The output was:
       0
-      Microsoft (R) C/C++ Optimizing Compiler Version 19.44.35217 for x64
+      Microsoft (R) C/C++ Optimizing Compiler Version 19.44.35219 for x64
       Copyright (C) Microsoft Corporation.  All rights reserved.
       
       CMakeCXXCompilerId.cpp
-      Microsoft (R) Incremental Linker Version 14.44.35217.0
+      Microsoft (R) Incremental Linker Version 14.44.35219.0
       Copyright (C) Microsoft Corporation.  All rights reserved.
       
       /out:CMakeCXXCompilerId.exe 
@@ -109,8 +109,8 @@ events:
     checks:
       - "Detecting C compiler ABI info"
     directories:
-      source: "G:/git/COMP3016CW1/COMP3016/COMP3016-CW1/out/build/x64-debug-user/CMakeFiles/CMakeScratch/TryCompile-9krvca"
-      binary: "G:/git/COMP3016CW1/COMP3016/COMP3016-CW1/out/build/x64-debug-user/CMakeFiles/CMakeScratch/TryCompile-9krvca"
+      source: "G:/git/COMP3016CW1/COMP3016/COMP3016-CW1/out/build/x64-debug-user/CMakeFiles/CMakeScratch/TryCompile-vcobql"
+      binary: "G:/git/COMP3016CW1/COMP3016/COMP3016-CW1/out/build/x64-debug-user/CMakeFiles/CMakeScratch/TryCompile-vcobql"
     cmakeVariables:
       CMAKE_C_FLAGS: "/DWIN32 /D_WINDOWS /W3"
       CMAKE_C_FLAGS_DEBUG: "/MDd /Ob0 /Od /RTC1"
@@ -120,11 +120,11 @@ events:
       variable: "CMAKE_C_ABI_COMPILED"
       cached: true
       stdout: |
-        Change Dir: 'G:/git/COMP3016CW1/COMP3016/COMP3016-CW1/out/build/x64-debug-user/CMakeFiles/CMakeScratch/TryCompile-9krvca'
+        Change Dir: 'G:/git/COMP3016CW1/COMP3016/COMP3016-CW1/out/build/x64-debug-user/CMakeFiles/CMakeScratch/TryCompile-vcobql'
         
-        Run Build Command(s): "G:/Visual Studio 2022/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/Ninja/ninja.exe" -v cmTC_18123
-        [1/2] "G:\\Visual Studio 2022\\Community\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\cl.exe"  /nologo   /DWIN32 /D_WINDOWS /W3  /MDd /Ob0 /Od /RTC1 -Zi /showIncludes /FoCMakeFiles\\cmTC_18123.dir\\CMakeCCompilerABI.c.obj /FdCMakeFiles\\cmTC_18123.dir\\ /FS -c "G:\\Visual Studio 2022\\Community\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\CMake\\share\\cmake-3.31\\Modules\\CMakeCCompilerABI.c"
-        [2/2] C:\\WINDOWS\\system32\\cmd.exe /C "cd . && "G:\\Visual Studio 2022\\Community\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\CMake\\bin\\cmake.exe" -E vs_link_exe --msvc-ver=1944 --intdir=CMakeFiles\\cmTC_18123.dir --rc=C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\10.0.26100.0\\x64\\rc.exe --mt=C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\10.0.26100.0\\x64\\mt.exe --manifests  -- "G:\\Visual Studio 2022\\Community\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\link.exe" /nologo CMakeFiles\\cmTC_18123.dir\\CMakeCCompilerABI.c.obj  /out:cmTC_18123.exe /implib:cmTC_18123.lib /pdb:cmTC_18123.pdb /version:0.0 /machine:x64  /debug /INCREMENTAL /subsystem:console  kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib && cd ."
+        Run Build Command(s): "G:/Visual Studio 2022/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/Ninja/ninja.exe" -v cmTC_dc521
+        [1/2] "G:\\Visual Studio 2022\\Community\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\cl.exe"  /nologo   /DWIN32 /D_WINDOWS /W3  /MDd /Ob0 /Od /RTC1 -Zi /showIncludes /FoCMakeFiles\\cmTC_dc521.dir\\CMakeCCompilerABI.c.obj /FdCMakeFiles\\cmTC_dc521.dir\\ /FS -c "G:\\Visual Studio 2022\\Community\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\CMake\\share\\cmake-3.31\\Modules\\CMakeCCompilerABI.c"
+        [2/2] C:\\Windows\\system32\\cmd.exe /C "cd . && "G:\\Visual Studio 2022\\Community\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\CMake\\bin\\cmake.exe" -E vs_link_exe --msvc-ver=1944 --intdir=CMakeFiles\\cmTC_dc521.dir --rc=C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100261~1.0\\x64\\rc.exe --mt=C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100261~1.0\\x64\\mt.exe --manifests  -- "G:\\Visual Studio 2022\\Community\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\link.exe" /nologo CMakeFiles\\cmTC_dc521.dir\\CMakeCCompilerABI.c.obj  /out:cmTC_dc521.exe /implib:cmTC_dc521.lib /pdb:cmTC_dc521.pdb /version:0.0 /machine:x64  /debug /INCREMENTAL /subsystem:console  kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib && cd ."
         
       exitCode: 0
   -
@@ -152,8 +152,8 @@ events:
     checks:
       - "Detecting CXX compiler ABI info"
     directories:
-      source: "G:/git/COMP3016CW1/COMP3016/COMP3016-CW1/out/build/x64-debug-user/CMakeFiles/CMakeScratch/TryCompile-eduvug"
-      binary: "G:/git/COMP3016CW1/COMP3016/COMP3016-CW1/out/build/x64-debug-user/CMakeFiles/CMakeScratch/TryCompile-eduvug"
+      source: "G:/git/COMP3016CW1/COMP3016/COMP3016-CW1/out/build/x64-debug-user/CMakeFiles/CMakeScratch/TryCompile-umqpb0"
+      binary: "G:/git/COMP3016CW1/COMP3016/COMP3016-CW1/out/build/x64-debug-user/CMakeFiles/CMakeScratch/TryCompile-umqpb0"
     cmakeVariables:
       CMAKE_CXX_FLAGS: "/DWIN32 /D_WINDOWS /W3 /GR /EHsc"
       CMAKE_CXX_FLAGS_DEBUG: "/MDd /Ob0 /Od /RTC1"
@@ -164,11 +164,11 @@ events:
       variable: "CMAKE_CXX_ABI_COMPILED"
       cached: true
       stdout: |
-        Change Dir: 'G:/git/COMP3016CW1/COMP3016/COMP3016-CW1/out/build/x64-debug-user/CMakeFiles/CMakeScratch/TryCompile-eduvug'
+        Change Dir: 'G:/git/COMP3016CW1/COMP3016/COMP3016-CW1/out/build/x64-debug-user/CMakeFiles/CMakeScratch/TryCompile-umqpb0'
         
-        Run Build Command(s): "G:/Visual Studio 2022/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/Ninja/ninja.exe" -v cmTC_a1242
-        [1/2] "G:\\Visual Studio 2022\\Community\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\cl.exe"  /nologo /TP   /DWIN32 /D_WINDOWS /W3 /GR /EHsc  /MDd /Ob0 /Od /RTC1 -Zi /showIncludes /FoCMakeFiles\\cmTC_a1242.dir\\CMakeCXXCompilerABI.cpp.obj /FdCMakeFiles\\cmTC_a1242.dir\\ /FS -c "G:\\Visual Studio 2022\\Community\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\CMake\\share\\cmake-3.31\\Modules\\CMakeCXXCompilerABI.cpp"
-        [2/2] C:\\WINDOWS\\system32\\cmd.exe /C "cd . && "G:\\Visual Studio 2022\\Community\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\CMake\\bin\\cmake.exe" -E vs_link_exe --msvc-ver=1944 --intdir=CMakeFiles\\cmTC_a1242.dir --rc=C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\10.0.26100.0\\x64\\rc.exe --mt=C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\10.0.26100.0\\x64\\mt.exe --manifests  -- "G:\\Visual Studio 2022\\Community\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\link.exe" /nologo CMakeFiles\\cmTC_a1242.dir\\CMakeCXXCompilerABI.cpp.obj  /out:cmTC_a1242.exe /implib:cmTC_a1242.lib /pdb:cmTC_a1242.pdb /version:0.0 /machine:x64  /debug /INCREMENTAL /subsystem:console  kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib && cd ."
+        Run Build Command(s): "G:/Visual Studio 2022/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/Ninja/ninja.exe" -v cmTC_f261b
+        [1/2] "G:\\Visual Studio 2022\\Community\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\cl.exe"  /nologo /TP   /DWIN32 /D_WINDOWS /W3 /GR /EHsc  /MDd /Ob0 /Od /RTC1 -Zi /showIncludes /FoCMakeFiles\\cmTC_f261b.dir\\CMakeCXXCompilerABI.cpp.obj /FdCMakeFiles\\cmTC_f261b.dir\\ /FS -c "G:\\Visual Studio 2022\\Community\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\CMake\\share\\cmake-3.31\\Modules\\CMakeCXXCompilerABI.cpp"
+        [2/2] C:\\Windows\\system32\\cmd.exe /C "cd . && "G:\\Visual Studio 2022\\Community\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\CMake\\bin\\cmake.exe" -E vs_link_exe --msvc-ver=1944 --intdir=CMakeFiles\\cmTC_f261b.dir --rc=C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100261~1.0\\x64\\rc.exe --mt=C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100261~1.0\\x64\\mt.exe --manifests  -- "G:\\Visual Studio 2022\\Community\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\link.exe" /nologo CMakeFiles\\cmTC_f261b.dir\\CMakeCXXCompilerABI.cpp.obj  /out:cmTC_f261b.exe /implib:cmTC_f261b.lib /pdb:cmTC_f261b.pdb /version:0.0 /machine:x64  /debug /INCREMENTAL /subsystem:console  kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib && cd ."
         
       exitCode: 0
   -
@@ -190,8 +190,8 @@ events:
   -
     kind: "try_compile-v1"
     backtrace:
-      - "D:/SDL/SDL3.2.24/cmake/sdlcpu.cmake:93 (try_compile)"
-      - "D:/SDL/SDL3.2.24/cmake/SDL3ConfigVersion.cmake:32 (SDL_DetectTargetCPUArchitectures)"
+      - "E:/SDL/SDL3.2.24/cmake/sdlcpu.cmake:93 (try_compile)"
+      - "E:/SDL/SDL3.2.24/cmake/SDL3ConfigVersion.cmake:32 (SDL_DetectTargetCPUArchitectures)"
       - "COMP3016-CW1/CMakeLists.txt:1 (find_package)"
     directories:
       source: "G:/git/COMP3016CW1/COMP3016/COMP3016-CW1/out/build/x64-debug-user/COMP3016-CW1/CMakeFiles/CMakeTmp/SDL_detect_arch/CMakeFiles/CMakeTmp"
@@ -207,9 +207,9 @@ events:
       stdout: |
         Change Dir: 'G:/git/COMP3016CW1/COMP3016/COMP3016-CW1/out/build/x64-debug-user/COMP3016-CW1/CMakeFiles/CMakeTmp/SDL_detect_arch/CMakeFiles/CMakeTmp'
         
-        Run Build Command(s): "G:/Visual Studio 2022/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/Ninja/ninja.exe" -v cmTC_d0362
-        [1/2] "G:\\Visual Studio 2022\\Community\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\cl.exe"  /nologo   /DWIN32 /D_WINDOWS /W3  /MDd /Ob0 /Od /RTC1 -Zi /showIncludes /FoCMakeFiles\\cmTC_d0362.dir\\SDL_detect_arch.c.obj /FdCMakeFiles\\cmTC_d0362.dir\\cmTC_d0362.pdb /FS -c G:\\git\\COMP3016CW1\\COMP3016\\COMP3016-CW1\\out\\build\\x64-debug-user\\COMP3016-CW1\\CMakeFiles\\CMakeTmp\\SDL_detect_arch.c
-        [2/2] C:\\WINDOWS\\system32\\cmd.exe /C "cd . && "G:\\Visual Studio 2022\\Community\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\lib.exe" /nologo /machine:x64 /out:cmTC_d0362.lib CMakeFiles\\cmTC_d0362.dir\\SDL_detect_arch.c.obj && cd ."
+        Run Build Command(s): "G:/Visual Studio 2022/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/Ninja/ninja.exe" -v cmTC_ae070
+        [1/2] "G:\\Visual Studio 2022\\Community\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\cl.exe"  /nologo   /DWIN32 /D_WINDOWS /W3  /MDd /Ob0 /Od /RTC1 -Zi /showIncludes /FoCMakeFiles\\cmTC_ae070.dir\\SDL_detect_arch.c.obj /FdCMakeFiles\\cmTC_ae070.dir\\cmTC_ae070.pdb /FS -c G:\\git\\COMP3016CW1\\COMP3016\\COMP3016-CW1\\out\\build\\x64-debug-user\\COMP3016-CW1\\CMakeFiles\\CMakeTmp\\SDL_detect_arch.c
+        [2/2] C:\\Windows\\system32\\cmd.exe /C "cd . && "G:\\Visual Studio 2022\\Community\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\lib.exe" /nologo /machine:x64 /out:cmTC_ae070.lib CMakeFiles\\cmTC_ae070.dir\\SDL_detect_arch.c.obj && cd ."
         
       exitCode: 0
 ...
