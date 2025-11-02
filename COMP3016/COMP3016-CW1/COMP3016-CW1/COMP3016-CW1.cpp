@@ -12,7 +12,7 @@
 
 constexpr float PI = 3.14159265358979323846f;
 
-// -------------- helper: load a texture from multiple candidate paths ---------
+// load a texture from multiple candidate paths
 static SDL_Texture* load_any(SDL_Renderer* r,
     const char* p1,
     const char* p2 = nullptr,
@@ -46,6 +46,7 @@ struct Vec2 {
 struct Glyph5x7 { const char ch; const unsigned char rows[7]; };
 static const Glyph5x7 FONT[] = {
     { 'A',{0b01110,0b10001,0b10001,0b11111,0b10001,0b10001,0b10001} },
+    { 'C',{0b01110,0b10001,0b10000,0b10000,0b10000,0b10001,0b01110} },
     { 'D',{0b11110,0b10001,0b10001,0b10001,0b10001,0b10001,0b11110} },
     { 'E',{0b11111,0b10000,0b10000,0b11110,0b10000,0b10000,0b11111} },
     { 'F',{0b11111,0b10000,0b10000,0b11110,0b10000,0b10000,0b10000} },
@@ -64,6 +65,7 @@ static const Glyph5x7 FONT[] = {
     { 'U',{0b10001,0b10001,0b10001,0b10001,0b10001,0b10001,0b01110} },
     { 'V',{0b10001,0b10001,0b10001,0b01010,0b01010,0b00100,0b00100} },
     { 'W',{0b10001,0b10001,0b10101,0b10101,0b10101,0b11011,0b10001} },
+    { 'X',{0b10001,0b01010,0b00100,0b00100,0b00100,0b01010,0b10001} },
     { 'Y',{0b10001,0b10001,0b01010,0b00100,0b00100,0b00100,0b00100} },
     { '0',{0b01110,0b10001,0b10011,0b10101,0b11001,0b10001,0b01110} },
     { '1',{0b00100,0b01100,0b00100,0b00100,0b00100,0b00100,0b01110} },
@@ -423,28 +425,51 @@ static bool point_in_rect(float px, float py, const SDL_FRect& r) {
 // Game
 class Game {
 public:
-    enum class State { Playing, Intermission, GameOver };
+    enum class State { Menu, Playing, Intermission, GameOver };
 
     Game(SDL_Renderer* ren, SDL_Window* win, int w, int h)
         : r(ren), window(win), width(w), height(h), rnd(std::random_device{}()),
         distX(30.f, w - 30.f), distY(30.f, h - 30.f)
     {
         background = load_any(r, "data/assets/map.png");
-        reset_run(); 
+        menuBg = load_any(r, "data/assets/Game Menu.png");
+        state = State::Menu;
+        prepare_menu_ui();
+        if (window) SDL_SetWindowTitle(window, "CW1 – Top-Down Zombies | Menu");
     }
-    ~Game() { if (background) SDL_DestroyTexture(background); }
+    ~Game() {
+        if (background) SDL_DestroyTexture(background);
+        if (menuBg)     SDL_DestroyTexture(menuBg);
+    }
 
     // event handling
     void handle_event(const SDL_Event& e) {
+        // Menu
+        if (state == State::Menu) {
+            if (e.type == SDL_EVENT_MOUSE_BUTTON_DOWN && e.button.button == SDL_BUTTON_LEFT) {
+                float mx = 0.f, my = 0.f; SDL_GetMouseState(&mx, &my);
+                if (point_in_rect(mx, my, btnPlay)) { reset_run(); return; }
+                if (point_in_rect(mx, my, btnExit)) { wantQuit = true; return; }
+            }
+            if (e.type == SDL_EVENT_KEY_DOWN &&
+                (e.key.key == SDLK_RETURN || e.key.key == SDLK_RETURN2 || e.key.key == SDLK_SPACE)) {
+                reset_run(); return;
+            }
+            return;
+        }
+
+        // Game Over
         if (state == State::GameOver) {
             if (e.type == SDL_EVENT_MOUSE_BUTTON_DOWN && e.button.button == SDL_BUTTON_LEFT) {
                 float mx = 0.f, my = 0.f; SDL_GetMouseState(&mx, &my);
                 if (point_in_rect(mx, my, btnRestart)) { reset_run(); }
+                else if (point_in_rect(mx, my, btnMenu)) { go_to_menu(); }
                 else if (point_in_rect(mx, my, btnQuit)) { wantQuit = true; }
             }
             return;
         }
 
+        // Playing / Intermission input
         if (e.type == SDL_EVENT_MOUSE_BUTTON_DOWN && e.button.button == SDL_BUTTON_LEFT) {
             fireHeld = true;
             if (player->get_weapon_index() == 0) pistolClickQueued = true; // pistol = semi-auto
@@ -471,7 +496,7 @@ public:
 
     // core update
     void update(float dt, const bool* kstate, float mx, float my) {
-        if (state == State::GameOver) return;
+        if (state == State::Menu || state == State::GameOver) return;
 
         damageCooldown = std::max(0.f, damageCooldown - dt);
 
@@ -575,6 +600,36 @@ public:
     }
 
     void draw() const {
+        // MENU
+        if (state == State::Menu) {
+            SDL_SetRenderDrawColor(r, 10, 15, 18, 255);
+            SDL_RenderClear(r);
+
+            if (menuBg) {
+                float tw = 0, th = 0; SDL_GetTextureSize(menuBg, &tw, &th);
+                float sx = (float)width / tw, sy = (float)height / th;
+                float s = std::max(sx, sy);
+                SDL_FRect dst{ (float)width / 2.f - tw * s / 2.f, (float)height / 2.f - th * s / 2.f, tw * s, th * s };
+                SDL_RenderTexture(r, menuBg, nullptr, &dst);
+            }
+
+            float mx = 0, my = 0; SDL_GetMouseState(&mx, &my);
+            auto draw_btn = [&](const SDL_FRect& rc, const char* label) {
+                bool hov = point_in_rect(mx, my, rc);
+                SDL_SetRenderDrawColor(r, hov ? 90 : 60, hov ? 120 : 80, 140, 255);
+                SDL_RenderFillRect(r, &rc);
+                SDL_SetRenderDrawColor(r, 20, 20, 30, 255);
+                SDL_RenderRect(r, &rc);
+                draw_text(r, rc.x + 26.f, rc.y + 10.f, label, 2.0f, SDL_Color{ 255,255,255,255 });
+                };
+            draw_btn(btnPlay, "PLAY");
+            draw_btn(btnExit, "EXIT");
+
+            SDL_RenderPresent(r);
+            return;
+        }
+
+        // GAME / GAME OVER RENDER
         if (background) {
             SDL_FRect dst{ 0.f,0.f,(float)width,(float)height };
             SDL_RenderTexture(r, background, nullptr, &dst);
@@ -606,6 +661,7 @@ private:
     SDL_Window* window{};
     int width{}, height{};
     SDL_Texture* background{};
+    SDL_Texture* menuBg{};
 
     std::unique_ptr<Player> player;
     std::vector<Zombie> zombies;
@@ -613,7 +669,7 @@ private:
     std::vector<AmmoCrate> ammoCrates;
     std::vector<HealthBox> healthBoxes;
 
-    State state{ State::Playing };
+    State state{ State::Menu };
 
     float surviveTime{ 0.f };
     int   score{ 0 };
@@ -646,8 +702,9 @@ private:
     float damageCooldown{ 0.f };
     mutable float gameOverAnim{ 0.f };
 
-    // game over UI
     SDL_FRect btnRestart{}, btnQuit{};
+    SDL_FRect btnPlay{}, btnExit{};
+    SDL_FRect btnMenu{};
     bool      wantQuit{ false };
 
     static bool circle_hit(const Vec2& a, float ar, const Vec2& b, float br) {
@@ -669,7 +726,7 @@ private:
     Vec2 random_point_away_from_player(float dmin) {
         for (int tries = 0; tries < 20; ++tries) {
             Vec2 p{ distX(rnd), distY(rnd) };
-            if ((p - player->pos).len() >= dmin) return p;
+            if (!player || (p - player->pos).len() >= dmin) return p;
         }
         return Vec2{ distX(rnd), distY(rnd) };
     }
@@ -768,13 +825,28 @@ private:
             draw_text(r, rect.x + 22.f, rect.y + 10.f, label, 2.0f, SDL_Color{ 255,255,255,255 });
             };
         draw_button(btnRestart, "RESTART");
-        draw_button(btnQuit, "QUIT");
+        draw_button(btnMenu, "MENU");
+        draw_button(btnQuit, "EXIT");
     }
 
     void prepare_game_over_ui() {
         const float bw = 180.f, bh = 40.f;
-        btnRestart = SDL_FRect{ width / 2.f - bw / 2.f, height / 2.f - 5.f, bw, bh };
-        btnQuit = SDL_FRect{ width / 2.f - bw / 2.f, height / 2.f + 45.f, bw, bh };
+        const float cx = width / 2.f - bw / 2.f;
+        const float cy = height / 2.f - 5.f;
+
+        btnRestart = SDL_FRect{ cx, cy, bw, bh };
+        btnMenu = SDL_FRect{ cx, cy + bh + 10.f, bw, bh };
+        btnQuit = SDL_FRect{ cx, cy + (bh + 10.f) * 2.f, bw, bh };
+    }
+
+    void prepare_menu_ui() {
+        const float bw = 100.f;
+        const float bh = 48.f;
+        const float left = 210.f;
+        const float top = height * 0.70f;
+
+        btnPlay = SDL_FRect{ left, top, bw, bh };
+        btnExit = SDL_FRect{ left, top + bh + 18.f, bw, bh };
     }
 
     void reset_run() {
@@ -792,6 +864,14 @@ private:
         start_wave(currentWave);
 
         state = State::Playing;
+    }
+
+    void go_to_menu() {
+        zombies.clear(); bullets.clear(); ammoCrates.clear(); healthBoxes.clear();
+        player.reset();
+        state = State::Menu;
+        if (window)
+            SDL_SetWindowTitle(window, "CW1 – Top-Down Zombies | Menu");
     }
 };
 
