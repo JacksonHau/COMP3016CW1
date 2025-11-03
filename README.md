@@ -71,7 +71,7 @@ All AI outputs were reviewed, modified, and integrated manually.
 ![Image Alt](https://github.com/JacksonHau/COMP3016CW1/blob/main/Screenshot/Game%20Over.jpg?raw=true)
 
 ## How to run
-1. Download and extract the `.zip` file.  
+1. Download and extract the `Game.zip` file.  
 2. Ensure the following folders are included:
    - `data/assets/`
    - `data/sounds/`
