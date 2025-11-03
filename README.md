@@ -1,4 +1,4 @@
-# COMP3016CW1
+<img width="960" height="538" alt="image" src="https://github.com/user-attachments/assets/7dceb992-9229-4371-bbd8-00321fca559e" /># COMP3016CW1
 ## Overview
 Top-Down Zombies is a 2D survival shooter built in C++ using SDL3 for the Immersive Game Technologies (COMP3016) module. The player must survive against endless waves of zombies, using multiple weapons and pickups while managing ammo and health. This project demonstrates OOP design, file-based asset loading, AI-driven enemy steering, and exception handling in an unmanaged environment.
 ## Gameplay Description
@@ -59,3 +59,9 @@ All AI outputs were reviewed, modified, and integrated manually.
 
 ## UML
 ![Image Alt](https://github.com/JacksonHau/COMP3016CW1/blob/main/UML.jpg?raw=true)
+
+## Screenshots
+![Image Alt](https://github.com/JacksonHau/COMP3016CW1/blob/main/Screenshot/Game%20Menu.jpg?raw=true)
+![Image Alt](https://github.com/JacksonHau/COMP3016CW1/blob/main/Screenshot/Game%201.jpg?raw=true)
+![Image Alt](https://github.com/JacksonHau/COMP3016CW1/blob/main/Screenshot/Game%202.jpg?raw=true)
+![Image Alt](https://github.com/JacksonHau/COMP3016CW1/blob/main/Screenshot/Game%20Over.jpg?raw=true)
