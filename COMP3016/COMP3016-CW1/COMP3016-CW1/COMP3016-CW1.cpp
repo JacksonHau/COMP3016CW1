@@ -972,36 +972,35 @@ int main(int argc, char* argv[]) {
         SDL_ShowSimpleMessageBox(SDL_MESSAGEBOX_ERROR, "Error", "Error initialising SDL3", nullptr);
         return 1;
     }
+
     const int width = 960, height = 540;
     SDL_Window* win = SDL_CreateWindow("CW1 – Top-Down Zombies", width, height, 0);
-    if (!win) { SDL_ShowSimpleMessageBox(SDL_MESSAGEBOX_ERROR, "Error", "Error creating window", nullptr); SDL_Quit(); return 1; }
     SDL_Renderer* ren = SDL_CreateRenderer(win, nullptr);
-    if (!ren) { SDL_ShowSimpleMessageBox(SDL_MESSAGEBOX_ERROR, "Error", "Error creating renderer", win); SDL_DestroyWindow(win); SDL_Quit(); return 1; }
 
-    Game game(ren, win, width, height);
+    {
+        Game game(ren, win, width, height);
 
-    bool running = true;
-    Uint64 freq = SDL_GetPerformanceFrequency(), prev = SDL_GetPerformanceCounter();
-    while (running) {
-        Uint64 now = SDL_GetPerformanceCounter();
-        float dt = float(now - prev) / float(freq); prev = now;
-        dt = std::min(dt, 0.033f);
+        bool running = true;
+        Uint64 freq = SDL_GetPerformanceFrequency(), prev = SDL_GetPerformanceCounter();
+        while (running) {
+            Uint64 now = SDL_GetPerformanceCounter();
+            float dt = float(now - prev) / float(freq); prev = now;
+            dt = std::min(dt, 0.033f);
 
-        SDL_Event e;
-        while (SDL_PollEvent(&e)) {
-            if (e.type == SDL_EVENT_QUIT) { running = false; break; }
-            if (e.type == SDL_EVENT_KEY_DOWN && e.key.key == SDLK_ESCAPE) { running = false; break; }
-            game.handle_event(e);
+            SDL_Event e;
+            while (SDL_PollEvent(&e)) {
+                if (e.type == SDL_EVENT_QUIT) { running = false; break; }
+                if (e.type == SDL_EVENT_KEY_DOWN && e.key.key == SDLK_ESCAPE) { running = false; break; }
+                game.handle_event(e);
+            }
+            if (!running || game.wants_quit()) break;
+
+            float mx = 0.f, my = 0.f; SDL_GetMouseState(&mx, &my);
+            const bool* kstate = SDL_GetKeyboardState(nullptr);
+            game.update(dt, kstate, mx, my);
+            game.draw();
+            SDL_Delay(1);
         }
-        if (!running) break;
-        if (game.wants_quit()) break;
-
-        float mx = 0.f, my = 0.f; SDL_GetMouseState(&mx, &my);
-        const bool* kstate = SDL_GetKeyboardState(nullptr);
-
-        game.update(dt, kstate, mx, my);
-        game.draw();
-        SDL_Delay(1);
     }
 
     SDL_DestroyRenderer(ren);
