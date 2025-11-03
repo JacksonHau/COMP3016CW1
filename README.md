@@ -58,3 +58,4 @@ All AI outputs were reviewed, modified, and integrated manually.
 - Extensive manual play-testing to ensure no crash on unexpected input.
 
 ## UML
+![Image Alt](https://github.com/JacksonHau/COMP3016CW1/blob/main/UML.jpg?raw=true)
