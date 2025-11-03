@@ -76,6 +76,13 @@ This project successfully demonstrates:
 - OOP-based game structure with clean class hierarchy.
 - Integration of AI for creative and assistive coding.
 
+What I would do differently:
+- If my laptop never broke down I would have added more features.
+- I would add map selection.
+- More zombie variation.
+- Player turns red similar to Minecraft when attacked by the zombie.
+- Add save/load and high-score system using .json
+
 ## Music
 Menu Music: https://www.youtube.com/watch?v=HIsU_U0uIqU
 
