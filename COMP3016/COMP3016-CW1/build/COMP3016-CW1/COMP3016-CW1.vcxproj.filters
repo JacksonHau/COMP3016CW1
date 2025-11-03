@@ -6,17 +6,9 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="G:\git\COMP3016CW1\COMP3016\COMP3016-CW1\COMP3016-CW1\COMP3016-CW1.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
     <CustomBuild Include="G:\git\COMP3016CW1\COMP3016\COMP3016-CW1\COMP3016-CW1\CMakeLists.txt" />
   </ItemGroup>
   <ItemGroup>
-    <Filter Include="Header Files">
-      <UniqueIdentifier>{6653B3F3-85D3-3FA8-BFD0-EB24ACBCD557}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files">
       <UniqueIdentifier>{7A8A768C-6651-32D0-A107-B78C15901B30}</UniqueIdentifier>
     </Filter>

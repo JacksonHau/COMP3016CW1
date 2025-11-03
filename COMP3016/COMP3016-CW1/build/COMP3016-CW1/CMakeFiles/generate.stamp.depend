@@ -1,7 +1,15 @@
 # CMake generation dependency list for this directory.
-D:/Program Files/CMake/share/cmake-4.0/Modules/CMakePushCheckState.cmake
-D:/Program Files/CMake/share/cmake-4.0/Modules/FeatureSummary.cmake
-D:/SDL/SDL3.2.24/cmake/SDL3Config.cmake
-D:/SDL/SDL3.2.24/cmake/SDL3ConfigVersion.cmake
-D:/SDL/SDL3.2.24/cmake/sdlcpu.cmake
+G:/Visual Studio 2022/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.31/Modules/CMakeFindDependencyMacro.cmake
+G:/Visual Studio 2022/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.31/Modules/FeatureSummary.cmake
 G:/git/COMP3016CW1/COMP3016/COMP3016-CW1/COMP3016-CW1/CMakeLists.txt
+G:/vcpkg/vcpkg/installed/x64-windows/share/SDL3_image/SDL3_image-shared-targets-debug.cmake
+G:/vcpkg/vcpkg/installed/x64-windows/share/SDL3_image/SDL3_image-shared-targets-release.cmake
+G:/vcpkg/vcpkg/installed/x64-windows/share/SDL3_image/SDL3_image-shared-targets.cmake
+G:/vcpkg/vcpkg/installed/x64-windows/share/SDL3_image/SDL3_imageConfig.cmake
+G:/vcpkg/vcpkg/installed/x64-windows/share/SDL3_image/SDL3_imageConfigVersion.cmake
+G:/vcpkg/vcpkg/installed/x64-windows/share/sdl3/SDL3Config.cmake
+G:/vcpkg/vcpkg/installed/x64-windows/share/sdl3/SDL3ConfigVersion.cmake
+G:/vcpkg/vcpkg/installed/x64-windows/share/sdl3/SDL3headersTargets.cmake
+G:/vcpkg/vcpkg/installed/x64-windows/share/sdl3/SDL3sharedTargets-debug.cmake
+G:/vcpkg/vcpkg/installed/x64-windows/share/sdl3/SDL3sharedTargets-release.cmake
+G:/vcpkg/vcpkg/installed/x64-windows/share/sdl3/SDL3sharedTargets.cmake

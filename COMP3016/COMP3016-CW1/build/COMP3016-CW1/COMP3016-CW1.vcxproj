@@ -24,6 +24,7 @@
   <PropertyGroup Label="Globals">
     <ProjectGuid>{13564CEC-2239-3AF0-855D-A4472B185496}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
+    <VcpkgEnabled>false</VcpkgEnabled>
     <WindowsTargetPlatformVersion>10.0.26100.0</WindowsTargetPlatformVersion>
     <Platform>x64</Platform>
     <ProjectName>COMP3016-CW1</ProjectName>
@@ -54,30 +55,30 @@
   <ImportGroup Label="ExtensionSettings">
   </ImportGroup>
   <ImportGroup Label="PropertySheets">
-    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="do_not_import_user.props" Condition="exists('do_not_import_user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup>
     <_ProjectFileVersion>10.0.20506.1</_ProjectFileVersion>
-    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">G:\git\COMP3016CW1\COMP3016\COMP3016-CW1\build\COMP3016-CW1\Debug\</OutDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">G:\git\COMP3016CW1\COMP3016\COMP3016-CW1\build\release-bin\Debug\</OutDir>
     <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">COMP3016-CW1.dir\Debug\</IntDir>
     <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">COMP3016-CW1</TargetName>
     <TargetExt Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.exe</TargetExt>
     <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</LinkIncremental>
     <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</GenerateManifest>
-    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">G:\git\COMP3016CW1\COMP3016\COMP3016-CW1\build\COMP3016-CW1\Release\</OutDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">G:\git\COMP3016CW1\COMP3016\COMP3016-CW1\build\release-bin\Release\</OutDir>
     <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">COMP3016-CW1.dir\Release\</IntDir>
     <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">COMP3016-CW1</TargetName>
     <TargetExt Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.exe</TargetExt>
     <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkIncremental>
     <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</GenerateManifest>
-    <OutDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">G:\git\COMP3016CW1\COMP3016\COMP3016-CW1\build\COMP3016-CW1\MinSizeRel\</OutDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">G:\git\COMP3016CW1\COMP3016\COMP3016-CW1\build\release-bin\MinSizeRel\</OutDir>
     <IntDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">COMP3016-CW1.dir\MinSizeRel\</IntDir>
     <TargetName Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">COMP3016-CW1</TargetName>
     <TargetExt Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">.exe</TargetExt>
     <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkIncremental>
     <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">true</GenerateManifest>
-    <OutDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">G:\git\COMP3016CW1\COMP3016\COMP3016-CW1\build\COMP3016-CW1\RelWithDebInfo\</OutDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">G:\git\COMP3016CW1\COMP3016\COMP3016-CW1\build\release-bin\RelWithDebInfo\</OutDir>
     <IntDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">COMP3016-CW1.dir\RelWithDebInfo\</IntDir>
     <TargetName Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">COMP3016-CW1</TargetName>
     <TargetExt Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">.exe</TargetExt>
@@ -86,10 +87,12 @@
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
+      <AdditionalOptions>%(AdditionalOptions) /external:I "G:/vcpkg/vcpkg/installed/x64-windows/include"</AdditionalOptions>
       <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <ExceptionHandling>Sync</ExceptionHandling>
+      <ExternalWarningLevel>TurnOffAllWarnings</ExternalWarningLevel>
       <InlineFunctionExpansion>Disabled</InlineFunctionExpansion>
       <LanguageStandard>stdcpp20</LanguageStandard>
       <MinimalRebuild></MinimalRebuild>
@@ -106,23 +109,54 @@
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_DEBUG;_WINDOWS;CMAKE_INTDIR=\"Debug\"</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>G:\vcpkg\vcpkg\installed\x64-windows\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Midl>
-      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>G:\vcpkg\vcpkg\installed\x64-windows\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
       <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
       <ProxyFileName>%(Filename)_p.c</ProxyFileName>
     </Midl>
+    <PostBuildEvent>
+      <Message>		</Message>
+      <Command>setlocal
+C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe -noprofile -executionpolicy Bypass -file G:/vcpkg/vcpkg/scripts/buildsystems/msbuild/applocal.ps1 -targetBinary G:/git/COMP3016CW1/COMP3016/COMP3016-CW1/build/release-bin/Debug/COMP3016-CW1.exe -installedDir G:/vcpkg/vcpkg/installed/x64-windows/debug/bin -OutVariable out
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"G:\Visual Studio 2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E copy_directory G:/git/COMP3016CW1/COMP3016/COMP3016-CW1/data G:/git/COMP3016CW1/COMP3016/COMP3016-CW1/build/release-bin/Debug/data
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"G:\Visual Studio 2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E copy G:/vcpkg/vcpkg/installed/x64-windows/debug/bin/SDL3_image.dll G:/vcpkg/vcpkg/installed/x64-windows/debug/bin/SDL3.dll G:/git/COMP3016CW1/COMP3016/COMP3016-CW1/build/release-bin/Debug
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+    </PostBuildEvent>
     <Link>
-      <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalDependencies>G:\vcpkg\vcpkg\installed\x64-windows\debug\lib\SDL3_image.lib;G:\vcpkg\vcpkg\installed\x64-windows\debug\lib\SDL3.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
       <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
       <ImportLibrary>G:/git/COMP3016CW1/COMP3016/COMP3016-CW1/build/COMP3016-CW1/Debug/COMP3016-CW1.lib</ImportLibrary>
-      <ProgramDataBaseFile>G:/git/COMP3016CW1/COMP3016/COMP3016-CW1/build/COMP3016-CW1/Debug/COMP3016-CW1.pdb</ProgramDataBaseFile>
+      <ProgramDataBaseFile>G:/git/COMP3016CW1/COMP3016/COMP3016-CW1/build/release-bin/Debug/COMP3016-CW1.pdb</ProgramDataBaseFile>
       <SubSystem>Console</SubSystem>
     </Link>
     <ProjectReference>
@@ -131,9 +165,11 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
+      <AdditionalOptions>%(AdditionalOptions) /external:I "G:/vcpkg/vcpkg/installed/x64-windows/include"</AdditionalOptions>
       <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
       <BasicRuntimeChecks>Default</BasicRuntimeChecks>
       <ExceptionHandling>Sync</ExceptionHandling>
+      <ExternalWarningLevel>TurnOffAllWarnings</ExternalWarningLevel>
       <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
       <LanguageStandard>stdcpp20</LanguageStandard>
       <MinimalRebuild></MinimalRebuild>
@@ -152,23 +188,54 @@
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;CMAKE_INTDIR=\"Release\"</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>G:\vcpkg\vcpkg\installed\x64-windows\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Midl>
-      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>G:\vcpkg\vcpkg\installed\x64-windows\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
       <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
       <ProxyFileName>%(Filename)_p.c</ProxyFileName>
     </Midl>
+    <PostBuildEvent>
+      <Message>		</Message>
+      <Command>setlocal
+C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe -noprofile -executionpolicy Bypass -file G:/vcpkg/vcpkg/scripts/buildsystems/msbuild/applocal.ps1 -targetBinary G:/git/COMP3016CW1/COMP3016/COMP3016-CW1/build/release-bin/Release/COMP3016-CW1.exe -installedDir G:/vcpkg/vcpkg/installed/x64-windows/bin -OutVariable out
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"G:\Visual Studio 2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E copy_directory G:/git/COMP3016CW1/COMP3016/COMP3016-CW1/data G:/git/COMP3016CW1/COMP3016/COMP3016-CW1/build/release-bin/Release/data
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"G:\Visual Studio 2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E copy G:/vcpkg/vcpkg/installed/x64-windows/bin/SDL3_image.dll G:/vcpkg/vcpkg/installed/x64-windows/bin/SDL3.dll G:/git/COMP3016CW1/COMP3016/COMP3016-CW1/build/release-bin/Release
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+    </PostBuildEvent>
     <Link>
-      <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalDependencies>G:\vcpkg\vcpkg\installed\x64-windows\lib\SDL3_image.lib;G:\vcpkg\vcpkg\installed\x64-windows\lib\SDL3.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
       <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
       <GenerateDebugInformation>false</GenerateDebugInformation>
       <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
       <ImportLibrary>G:/git/COMP3016CW1/COMP3016/COMP3016-CW1/build/COMP3016-CW1/Release/COMP3016-CW1.lib</ImportLibrary>
-      <ProgramDataBaseFile>G:/git/COMP3016CW1/COMP3016/COMP3016-CW1/build/COMP3016-CW1/Release/COMP3016-CW1.pdb</ProgramDataBaseFile>
+      <ProgramDataBaseFile>G:/git/COMP3016CW1/COMP3016/COMP3016-CW1/build/release-bin/Release/COMP3016-CW1.pdb</ProgramDataBaseFile>
       <SubSystem>Console</SubSystem>
     </Link>
     <ProjectReference>
@@ -177,9 +244,11 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">
     <ClCompile>
+      <AdditionalOptions>%(AdditionalOptions) /external:I "G:/vcpkg/vcpkg/installed/x64-windows/include"</AdditionalOptions>
       <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
       <BasicRuntimeChecks>Default</BasicRuntimeChecks>
       <ExceptionHandling>Sync</ExceptionHandling>
+      <ExternalWarningLevel>TurnOffAllWarnings</ExternalWarningLevel>
       <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
       <LanguageStandard>stdcpp20</LanguageStandard>
       <MinimalRebuild></MinimalRebuild>
@@ -198,23 +267,54 @@
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;CMAKE_INTDIR=\"MinSizeRel\"</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>G:\vcpkg\vcpkg\installed\x64-windows\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Midl>
-      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>G:\vcpkg\vcpkg\installed\x64-windows\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
       <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
       <ProxyFileName>%(Filename)_p.c</ProxyFileName>
     </Midl>
+    <PostBuildEvent>
+      <Message>		</Message>
+      <Command>setlocal
+C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe -noprofile -executionpolicy Bypass -file G:/vcpkg/vcpkg/scripts/buildsystems/msbuild/applocal.ps1 -targetBinary G:/git/COMP3016CW1/COMP3016/COMP3016-CW1/build/release-bin/MinSizeRel/COMP3016-CW1.exe -installedDir G:/vcpkg/vcpkg/installed/x64-windows/bin -OutVariable out
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"G:\Visual Studio 2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E copy_directory G:/git/COMP3016CW1/COMP3016/COMP3016-CW1/data G:/git/COMP3016CW1/COMP3016/COMP3016-CW1/build/release-bin/MinSizeRel/data
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"G:\Visual Studio 2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E copy G:/vcpkg/vcpkg/installed/x64-windows/bin/SDL3_image.dll G:/vcpkg/vcpkg/installed/x64-windows/bin/SDL3.dll G:/git/COMP3016CW1/COMP3016/COMP3016-CW1/build/release-bin/MinSizeRel
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+    </PostBuildEvent>
     <Link>
-      <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalDependencies>G:\vcpkg\vcpkg\installed\x64-windows\lib\SDL3_image.lib;G:\vcpkg\vcpkg\installed\x64-windows\lib\SDL3.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
       <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
       <GenerateDebugInformation>false</GenerateDebugInformation>
       <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
       <ImportLibrary>G:/git/COMP3016CW1/COMP3016/COMP3016-CW1/build/COMP3016-CW1/MinSizeRel/COMP3016-CW1.lib</ImportLibrary>
-      <ProgramDataBaseFile>G:/git/COMP3016CW1/COMP3016/COMP3016-CW1/build/COMP3016-CW1/MinSizeRel/COMP3016-CW1.pdb</ProgramDataBaseFile>
+      <ProgramDataBaseFile>G:/git/COMP3016CW1/COMP3016/COMP3016-CW1/build/release-bin/MinSizeRel/COMP3016-CW1.pdb</ProgramDataBaseFile>
       <SubSystem>Console</SubSystem>
     </Link>
     <ProjectReference>
@@ -223,10 +323,12 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">
     <ClCompile>
+      <AdditionalOptions>%(AdditionalOptions) /external:I "G:/vcpkg/vcpkg/installed/x64-windows/include"</AdditionalOptions>
       <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
       <BasicRuntimeChecks>Default</BasicRuntimeChecks>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <ExceptionHandling>Sync</ExceptionHandling>
+      <ExternalWarningLevel>TurnOffAllWarnings</ExternalWarningLevel>
       <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
       <LanguageStandard>stdcpp20</LanguageStandard>
       <MinimalRebuild></MinimalRebuild>
@@ -243,23 +345,54 @@
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;CMAKE_INTDIR=\"RelWithDebInfo\"</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>G:\vcpkg\vcpkg\installed\x64-windows\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Midl>
-      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>G:\vcpkg\vcpkg\installed\x64-windows\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
       <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
       <ProxyFileName>%(Filename)_p.c</ProxyFileName>
     </Midl>
+    <PostBuildEvent>
+      <Message>		</Message>
+      <Command>setlocal
+C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe -noprofile -executionpolicy Bypass -file G:/vcpkg/vcpkg/scripts/buildsystems/msbuild/applocal.ps1 -targetBinary G:/git/COMP3016CW1/COMP3016/COMP3016-CW1/build/release-bin/RelWithDebInfo/COMP3016-CW1.exe -installedDir G:/vcpkg/vcpkg/installed/x64-windows/bin -OutVariable out
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"G:\Visual Studio 2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E copy_directory G:/git/COMP3016CW1/COMP3016/COMP3016-CW1/data G:/git/COMP3016CW1/COMP3016/COMP3016-CW1/build/release-bin/RelWithDebInfo/data
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"G:\Visual Studio 2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E copy G:/vcpkg/vcpkg/installed/x64-windows/bin/SDL3_image.dll G:/vcpkg/vcpkg/installed/x64-windows/bin/SDL3.dll G:/git/COMP3016CW1/COMP3016/COMP3016-CW1/build/release-bin/RelWithDebInfo
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+    </PostBuildEvent>
     <Link>
-      <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalDependencies>G:\vcpkg\vcpkg\installed\x64-windows\lib\SDL3_image.lib;G:\vcpkg\vcpkg\installed\x64-windows\lib\SDL3.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
       <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
       <ImportLibrary>G:/git/COMP3016CW1/COMP3016/COMP3016-CW1/build/COMP3016-CW1/RelWithDebInfo/COMP3016-CW1.lib</ImportLibrary>
-      <ProgramDataBaseFile>G:/git/COMP3016CW1/COMP3016/COMP3016-CW1/build/COMP3016-CW1/RelWithDebInfo/COMP3016-CW1.pdb</ProgramDataBaseFile>
+      <ProgramDataBaseFile>G:/git/COMP3016CW1/COMP3016/COMP3016-CW1/build/release-bin/RelWithDebInfo/COMP3016-CW1.pdb</ProgramDataBaseFile>
       <SubSystem>Console</SubSystem>
     </Link>
     <ProjectReference>
@@ -271,7 +404,7 @@
       <UseUtf8Encoding>Always</UseUtf8Encoding>
       <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Building Custom Rule G:/git/COMP3016CW1/COMP3016/COMP3016-CW1/COMP3016-CW1/CMakeLists.txt</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
-"D:\Program Files\CMake\bin\cmake.exe" -SG:/git/COMP3016CW1/COMP3016/COMP3016-CW1 -BG:/git/COMP3016CW1/COMP3016/COMP3016-CW1/build --check-stamp-file G:/git/COMP3016CW1/COMP3016/COMP3016-CW1/build/COMP3016-CW1/CMakeFiles/generate.stamp
+"G:\Visual Studio 2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -SG:/git/COMP3016CW1/COMP3016/COMP3016-CW1 -BG:/git/COMP3016CW1/COMP3016/COMP3016-CW1/build --check-stamp-file G:/git/COMP3016CW1/COMP3016/COMP3016-CW1/build/COMP3016-CW1/CMakeFiles/generate.stamp
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -279,12 +412,12 @@ endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">D:\Program Files\CMake\share\cmake-4.0\Modules\CMakePushCheckState.cmake;D:\Program Files\CMake\share\cmake-4.0\Modules\FeatureSummary.cmake;D:\SDL\SDL3.2.24\cmake\SDL3Config.cmake;D:\SDL\SDL3.2.24\cmake\SDL3ConfigVersion.cmake;D:\SDL\SDL3.2.24\cmake\sdlcpu.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">G:\Visual Studio 2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.31\Modules\CMakeFindDependencyMacro.cmake;G:\Visual Studio 2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.31\Modules\FeatureSummary.cmake;G:\vcpkg\vcpkg\installed\x64-windows\share\SDL3_image\SDL3_image-shared-targets-debug.cmake;G:\vcpkg\vcpkg\installed\x64-windows\share\SDL3_image\SDL3_image-shared-targets-release.cmake;G:\vcpkg\vcpkg\installed\x64-windows\share\SDL3_image\SDL3_image-shared-targets.cmake;G:\vcpkg\vcpkg\installed\x64-windows\share\SDL3_image\SDL3_imageConfig.cmake;G:\vcpkg\vcpkg\installed\x64-windows\share\SDL3_image\SDL3_imageConfigVersion.cmake;G:\vcpkg\vcpkg\installed\x64-windows\share\sdl3\SDL3Config.cmake;G:\vcpkg\vcpkg\installed\x64-windows\share\sdl3\SDL3ConfigVersion.cmake;G:\vcpkg\vcpkg\installed\x64-windows\share\sdl3\SDL3headersTargets.cmake;G:\vcpkg\vcpkg\installed\x64-windows\share\sdl3\SDL3sharedTargets-debug.cmake;G:\vcpkg\vcpkg\installed\x64-windows\share\sdl3\SDL3sharedTargets-release.cmake;G:\vcpkg\vcpkg\installed\x64-windows\share\sdl3\SDL3sharedTargets.cmake;%(AdditionalInputs)</AdditionalInputs>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">G:\git\COMP3016CW1\COMP3016\COMP3016-CW1\build\COMP3016-CW1\CMakeFiles\generate.stamp</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
       <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Building Custom Rule G:/git/COMP3016CW1/COMP3016/COMP3016-CW1/COMP3016-CW1/CMakeLists.txt</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
-"D:\Program Files\CMake\bin\cmake.exe" -SG:/git/COMP3016CW1/COMP3016/COMP3016-CW1 -BG:/git/COMP3016CW1/COMP3016/COMP3016-CW1/build --check-stamp-file G:/git/COMP3016CW1/COMP3016/COMP3016-CW1/build/COMP3016-CW1/CMakeFiles/generate.stamp
+"G:\Visual Studio 2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -SG:/git/COMP3016CW1/COMP3016/COMP3016-CW1 -BG:/git/COMP3016CW1/COMP3016/COMP3016-CW1/build --check-stamp-file G:/git/COMP3016CW1/COMP3016/COMP3016-CW1/build/COMP3016-CW1/CMakeFiles/generate.stamp
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -292,12 +425,12 @@ endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">D:\Program Files\CMake\share\cmake-4.0\Modules\CMakePushCheckState.cmake;D:\Program Files\CMake\share\cmake-4.0\Modules\FeatureSummary.cmake;D:\SDL\SDL3.2.24\cmake\SDL3Config.cmake;D:\SDL\SDL3.2.24\cmake\SDL3ConfigVersion.cmake;D:\SDL\SDL3.2.24\cmake\sdlcpu.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">G:\Visual Studio 2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.31\Modules\CMakeFindDependencyMacro.cmake;G:\Visual Studio 2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.31\Modules\FeatureSummary.cmake;G:\vcpkg\vcpkg\installed\x64-windows\share\SDL3_image\SDL3_image-shared-targets-debug.cmake;G:\vcpkg\vcpkg\installed\x64-windows\share\SDL3_image\SDL3_image-shared-targets-release.cmake;G:\vcpkg\vcpkg\installed\x64-windows\share\SDL3_image\SDL3_image-shared-targets.cmake;G:\vcpkg\vcpkg\installed\x64-windows\share\SDL3_image\SDL3_imageConfig.cmake;G:\vcpkg\vcpkg\installed\x64-windows\share\SDL3_image\SDL3_imageConfigVersion.cmake;G:\vcpkg\vcpkg\installed\x64-windows\share\sdl3\SDL3Config.cmake;G:\vcpkg\vcpkg\installed\x64-windows\share\sdl3\SDL3ConfigVersion.cmake;G:\vcpkg\vcpkg\installed\x64-windows\share\sdl3\SDL3headersTargets.cmake;G:\vcpkg\vcpkg\installed\x64-windows\share\sdl3\SDL3sharedTargets-debug.cmake;G:\vcpkg\vcpkg\installed\x64-windows\share\sdl3\SDL3sharedTargets-release.cmake;G:\vcpkg\vcpkg\installed\x64-windows\share\sdl3\SDL3sharedTargets.cmake;%(AdditionalInputs)</AdditionalInputs>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">G:\git\COMP3016CW1\COMP3016\COMP3016-CW1\build\COMP3016-CW1\CMakeFiles\generate.stamp</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkObjects>
       <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">Building Custom Rule G:/git/COMP3016CW1/COMP3016/COMP3016-CW1/COMP3016-CW1/CMakeLists.txt</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">setlocal
-"D:\Program Files\CMake\bin\cmake.exe" -SG:/git/COMP3016CW1/COMP3016/COMP3016-CW1 -BG:/git/COMP3016CW1/COMP3016/COMP3016-CW1/build --check-stamp-file G:/git/COMP3016CW1/COMP3016/COMP3016-CW1/build/COMP3016-CW1/CMakeFiles/generate.stamp
+"G:\Visual Studio 2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -SG:/git/COMP3016CW1/COMP3016/COMP3016-CW1 -BG:/git/COMP3016CW1/COMP3016/COMP3016-CW1/build --check-stamp-file G:/git/COMP3016CW1/COMP3016/COMP3016-CW1/build/COMP3016-CW1/CMakeFiles/generate.stamp
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -305,12 +438,12 @@ endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">D:\Program Files\CMake\share\cmake-4.0\Modules\CMakePushCheckState.cmake;D:\Program Files\CMake\share\cmake-4.0\Modules\FeatureSummary.cmake;D:\SDL\SDL3.2.24\cmake\SDL3Config.cmake;D:\SDL\SDL3.2.24\cmake\SDL3ConfigVersion.cmake;D:\SDL\SDL3.2.24\cmake\sdlcpu.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">G:\Visual Studio 2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.31\Modules\CMakeFindDependencyMacro.cmake;G:\Visual Studio 2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.31\Modules\FeatureSummary.cmake;G:\vcpkg\vcpkg\installed\x64-windows\share\SDL3_image\SDL3_image-shared-targets-debug.cmake;G:\vcpkg\vcpkg\installed\x64-windows\share\SDL3_image\SDL3_image-shared-targets-release.cmake;G:\vcpkg\vcpkg\installed\x64-windows\share\SDL3_image\SDL3_image-shared-targets.cmake;G:\vcpkg\vcpkg\installed\x64-windows\share\SDL3_image\SDL3_imageConfig.cmake;G:\vcpkg\vcpkg\installed\x64-windows\share\SDL3_image\SDL3_imageConfigVersion.cmake;G:\vcpkg\vcpkg\installed\x64-windows\share\sdl3\SDL3Config.cmake;G:\vcpkg\vcpkg\installed\x64-windows\share\sdl3\SDL3ConfigVersion.cmake;G:\vcpkg\vcpkg\installed\x64-windows\share\sdl3\SDL3headersTargets.cmake;G:\vcpkg\vcpkg\installed\x64-windows\share\sdl3\SDL3sharedTargets-debug.cmake;G:\vcpkg\vcpkg\installed\x64-windows\share\sdl3\SDL3sharedTargets-release.cmake;G:\vcpkg\vcpkg\installed\x64-windows\share\sdl3\SDL3sharedTargets.cmake;%(AdditionalInputs)</AdditionalInputs>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">G:\git\COMP3016CW1\COMP3016\COMP3016-CW1\build\COMP3016-CW1\CMakeFiles\generate.stamp</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkObjects>
       <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Building Custom Rule G:/git/COMP3016CW1/COMP3016/COMP3016-CW1/COMP3016-CW1/CMakeLists.txt</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">setlocal
-"D:\Program Files\CMake\bin\cmake.exe" -SG:/git/COMP3016CW1/COMP3016/COMP3016-CW1 -BG:/git/COMP3016CW1/COMP3016/COMP3016-CW1/build --check-stamp-file G:/git/COMP3016CW1/COMP3016/COMP3016-CW1/build/COMP3016-CW1/CMakeFiles/generate.stamp
+"G:\Visual Studio 2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -SG:/git/COMP3016CW1/COMP3016/COMP3016-CW1 -BG:/git/COMP3016CW1/COMP3016/COMP3016-CW1/build --check-stamp-file G:/git/COMP3016CW1/COMP3016/COMP3016-CW1/build/COMP3016-CW1/CMakeFiles/generate.stamp
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -318,14 +451,13 @@ endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">D:\Program Files\CMake\share\cmake-4.0\Modules\CMakePushCheckState.cmake;D:\Program Files\CMake\share\cmake-4.0\Modules\FeatureSummary.cmake;D:\SDL\SDL3.2.24\cmake\SDL3Config.cmake;D:\SDL\SDL3.2.24\cmake\SDL3ConfigVersion.cmake;D:\SDL\SDL3.2.24\cmake\sdlcpu.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">G:\Visual Studio 2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.31\Modules\CMakeFindDependencyMacro.cmake;G:\Visual Studio 2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.31\Modules\FeatureSummary.cmake;G:\vcpkg\vcpkg\installed\x64-windows\share\SDL3_image\SDL3_image-shared-targets-debug.cmake;G:\vcpkg\vcpkg\installed\x64-windows\share\SDL3_image\SDL3_image-shared-targets-release.cmake;G:\vcpkg\vcpkg\installed\x64-windows\share\SDL3_image\SDL3_image-shared-targets.cmake;G:\vcpkg\vcpkg\installed\x64-windows\share\SDL3_image\SDL3_imageConfig.cmake;G:\vcpkg\vcpkg\installed\x64-windows\share\SDL3_image\SDL3_imageConfigVersion.cmake;G:\vcpkg\vcpkg\installed\x64-windows\share\sdl3\SDL3Config.cmake;G:\vcpkg\vcpkg\installed\x64-windows\share\sdl3\SDL3ConfigVersion.cmake;G:\vcpkg\vcpkg\installed\x64-windows\share\sdl3\SDL3headersTargets.cmake;G:\vcpkg\vcpkg\installed\x64-windows\share\sdl3\SDL3sharedTargets-debug.cmake;G:\vcpkg\vcpkg\installed\x64-windows\share\sdl3\SDL3sharedTargets-release.cmake;G:\vcpkg\vcpkg\installed\x64-windows\share\sdl3\SDL3sharedTargets.cmake;%(AdditionalInputs)</AdditionalInputs>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">G:\git\COMP3016CW1\COMP3016\COMP3016-CW1\build\COMP3016-CW1\CMakeFiles\generate.stamp</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">false</LinkObjects>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="G:\git\COMP3016CW1\COMP3016\COMP3016-CW1\COMP3016-CW1\COMP3016-CW1.cpp" />
-    <ClInclude Include="G:\git\COMP3016CW1\COMP3016\COMP3016-CW1\COMP3016-CW1\COMP3016-CW1.h" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
