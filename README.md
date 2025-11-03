@@ -1,6 +1,6 @@
 # COMP3016CW1
 ## Overview
-Top-Down Zombies is a 2D survival shooter built in C++ using SDL3 for the Immersive Game Technologies (COMP3016) module. The player must survive against endless waves of zombies, using multiple weapons and pickups while managing ammo and health. This project demonstrates OOP design, file-based asset loading, AI-driven enemy steering, and exception handling in an unmanaged environment.
+Night of the ZOMBREAK 2D is a 2D survival shooter built in C++ using SDL3 for the Immersive Game Technologies (COMP3016) module. Similar to my game I made for COMP2007, the player must survive against endless waves of zombies, using multiple weapons and pickups while managing ammo and health. This project demonstrates OOP design, file-based asset loading, AI-driven enemy steering, and exception handling in an unmanaged environment.
 
 ## Gameplay Description
 - **Objective**: Survive as long as possible against waves of zombies.
@@ -69,6 +69,19 @@ All AI outputs were reviewed, modified, and integrated manually.
 ![Image Alt](https://github.com/JacksonHau/COMP3016CW1/blob/main/Screenshot/Game%201.jpg?raw=true)
 ![Image Alt](https://github.com/JacksonHau/COMP3016CW1/blob/main/Screenshot/Game%202.jpg?raw=true)
 ![Image Alt](https://github.com/JacksonHau/COMP3016CW1/blob/main/Screenshot/Game%20Over.jpg?raw=true)
+
+## How to run
+1. Download and extract the `.zip` file.  
+2. Ensure the following folders are included:
+   - `data/assets/`
+   - `data/sounds/`
+   - `libpng16.dll`
+   - `SDL3.dll`
+   - `SDL3_image.dll`
+   - `zlib1.dll`
+3. Run `COMP3016-CW1.exe`  
+   *(No Visual Studio required — SDL3 handles dependencies)*  
+4. Press **X** anytime to exit.
 
 ## Evaluation
 This project successfully demonstrates:
