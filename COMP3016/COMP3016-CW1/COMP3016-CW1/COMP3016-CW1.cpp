@@ -1,6 +1,7 @@
 ﻿#include <SDL3/SDL.h>
 #include <SDL3/SDL_main.h>
 #include <SDL3_image/SDL_image.h>
+#include <SDL3/SDL_audio.h>
 
 #include <algorithm>
 #include <cmath>
@@ -12,7 +13,6 @@
 
 constexpr float PI = 3.14159265358979323846f;
 
-// load a texture from multiple candidate paths
 static SDL_Texture* load_any(SDL_Renderer* r,
     const char* p1,
     const char* p2 = nullptr,
@@ -29,20 +29,102 @@ static SDL_Texture* load_any(SDL_Renderer* r,
     return t;
 }
 
-// math
+// MUSIC (SDL3 stream API)
+class MusicPlayer {
+public:
+    bool init_and_load()
+    {
+        if (!load_wav_any("data/sounds/Menu Music.wav", menu)) {
+            SDL_Log("Menu music not found");
+        }
+        if (!load_wav_any("data/sounds/Background Music.wav", game)) {
+            SDL_Log("Game music not found");
+        }
+
+        if (!menu.buf && !game.buf) return true; 
+
+        const SDL_AudioSpec* want = menu.buf ? &menu.spec : &game.spec;
+        stream = SDL_OpenAudioDeviceStream(SDL_AUDIO_DEVICE_DEFAULT_PLAYBACK, want,
+            /*callback*/nullptr, /*userdata*/nullptr);
+        if (!stream) {
+            SDL_Log("SDL_OpenAudioDeviceStream failed: %s", SDL_GetError());
+            return false;
+        }
+        SDL_ResumeAudioStreamDevice(stream);
+        return true;
+    }
+
+    void shutdown()
+    {
+        if (stream) {
+            SDL_DestroyAudioStream(stream);
+            stream = nullptr;
+        }
+        if (menu.buf) SDL_free(menu.buf);
+        if (game.buf) SDL_free(game.buf);
+        menu = {}; game = {}; current = Which::None;
+    }
+
+    void play_menu() { switch_track(menu, Which::Menu); }
+    void play_game() { switch_track(game, Which::Game); }
+    void stop()
+    {
+        current = Which::None;
+        if (stream) SDL_ClearAudioStream(stream);
+    }
+
+    void update()
+    {
+        if (!stream || current == Which::None) return;
+        const Track& t = (current == Which::Menu ? menu : game);
+        if (!t.buf || t.len == 0) return;
+
+        const int avail = SDL_GetAudioStreamAvailable(stream);
+        if (avail < int(t.len / 2)) {
+            SDL_PutAudioStreamData(stream, t.buf, (int)t.len);
+        }
+    }
+
+private:
+    struct Track {
+        SDL_AudioSpec spec{};
+        Uint8* buf{ nullptr };
+        Uint32 len{ 0 };
+    };
+    enum class Which { None, Menu, Game };
+
+    SDL_AudioStream* stream{ nullptr };
+    Track menu{}, game{};
+    Which current{ Which::None };
+
+    static bool load_wav_any(const char* path, Track& out)
+    {
+        if (!SDL_LoadWAV(path, &out.spec, &out.buf, &out.len)) return false;
+        return true;
+    }
+
+    void switch_track(const Track& t, Which w)
+    {
+        if (!stream) return;
+        SDL_ClearAudioStream(stream);
+        if (t.buf && t.len) SDL_PutAudioStreamData(stream, t.buf, (int)t.len);
+        current = w;
+    }
+};
+
+// math, text, entities
 struct Vec2 {
     float x{ 0 }, y{ 0 };
     Vec2() = default;
-    Vec2(float X, float Y) : x(X), y(Y) {}
-    Vec2 operator+(const Vec2& o) const { return { x + o.x, y + o.y }; }
-    Vec2 operator-(const Vec2& o) const { return { x - o.x, y - o.y }; }
-    Vec2 operator*(float s) const { return { x * s, y * s }; }
+    Vec2(float X, float Y) :x(X), y(Y) {}
+    Vec2 operator+(const Vec2& o) const { return { x + o.x,y + o.y }; }
+    Vec2 operator-(const Vec2& o) const { return { x - o.x,y - o.y }; }
+    Vec2 operator*(float s) const { return { x * s,y * s }; }
     Vec2& operator+=(const Vec2& o) { x += o.x; y += o.y; return *this; }
     float len() const { return std::sqrt(x * x + y * y); }
     Vec2 normalized() const { float L = len(); return L > 0.0001f ? Vec2{ x / L,y / L } : Vec2{ 0,0 }; }
 };
 
-// simple 5x7 bitmap
 struct Glyph5x7 { const char ch; const unsigned char rows[7]; };
 static const Glyph5x7 FONT[] = {
     { 'A',{0b01110,0b10001,0b10001,0b11111,0b10001,0b10001,0b10001} },
@@ -82,12 +164,14 @@ static const Glyph5x7 FONT[] = {
     { '-',{0,0,0b11111,0,0,0,0} },
 };
 
-static const Glyph5x7* glyph_of(char c) {
+static const Glyph5x7* glyph_of(char c)
+{
     c = (char)std::toupper((unsigned char)c);
     for (const auto& g : FONT) if (g.ch == c) return &g;
     for (const auto& g : FONT) if (g.ch == ' ') return &g;
     return &FONT[0];
 }
+
 static void draw_text(SDL_Renderer* r, float x, float y, const std::string& s,
     float scale = 2.0f, SDL_Color col = { 255,255,255,255 })
 {
@@ -108,10 +192,8 @@ static void draw_text(SDL_Renderer* r, float x, float y, const std::string& s,
     }
 }
 
-// entities
 struct Entity {
-    Vec2 pos;
-    Vec2 vel;
+    Vec2 pos, vel;
     float radius{ 12.f };
     bool  alive{ true };
     virtual ~Entity() = default;
@@ -120,9 +202,8 @@ struct Entity {
 };
 
 struct Bullet : public Entity {
-    float lifetime{ 1.2f };
-    float age{ 0.f };
-    int   dmg{ 10 };
+    float lifetime{ 1.2f }, age{ 0.f };
+    int dmg{ 10 };
     Bullet(const Vec2& p, const Vec2& v, float life = 1.2f, float rad = 4.f, int damage = 10) {
         pos = p; vel = v; lifetime = life; radius = rad; dmg = damage;
     }
@@ -139,9 +220,7 @@ struct Zombie : public Entity {
     SDL_Texture* tex[8]{};
     float spriteScale{ 0.06f };
     Vec2 faceDir{ 1,0 };
-
-    int maxHP{ 30 };
-    int hp{ 30 };
+    int maxHP{ 30 }, hp{ 30 };
 
     Zombie(const Vec2& p, float s) { pos = p; speed = s; radius = 14.f; }
 
@@ -236,7 +315,6 @@ struct HealthBox : public Entity {
     }
 };
 
-// player & weapons
 struct Weapon {
     std::string  name;
     SDL_Texture* sprite{};
@@ -422,7 +500,7 @@ static bool point_in_rect(float px, float py, const SDL_FRect& r) {
     return (px >= r.x && px <= r.x + r.w && py >= r.y && py <= r.y + r.h);
 }
 
-// Game
+// GAME
 class Game {
 public:
     enum class State { Menu, Playing, Intermission, GameOver };
@@ -433,13 +511,19 @@ public:
     {
         background = load_any(r, "data/assets/map.png");
         menuBg = load_any(r, "data/assets/Game Menu.png");
+
+        music.init_and_load();
+        music.play_menu();
+
         state = State::Menu;
         prepare_menu_ui();
         if (window) SDL_SetWindowTitle(window, "CW1 – Top-Down Zombies | Menu");
     }
+
     ~Game() {
         if (background) SDL_DestroyTexture(background);
         if (menuBg)     SDL_DestroyTexture(menuBg);
+        music.shutdown();
     }
 
     // event handling
@@ -458,7 +542,7 @@ public:
             return;
         }
 
-        // Game Over
+		// Game Over
         if (state == State::GameOver) {
             if (e.type == SDL_EVENT_MOUSE_BUTTON_DOWN && e.button.button == SDL_BUTTON_LEFT) {
                 float mx = 0.f, my = 0.f; SDL_GetMouseState(&mx, &my);
@@ -494,8 +578,10 @@ public:
         }
     }
 
-    // core update
+	// core update
     void update(float dt, const bool* kstate, float mx, float my) {
+        music.update();
+
         if (state == State::Menu || state == State::GameOver) return;
 
         damageCooldown = std::max(0.f, damageCooldown - dt);
@@ -510,7 +596,7 @@ public:
         if (pistolClickQueued) { pistolClickQueued = false; (void)player->try_shoot(bullets, rnd); }
         if (fireHeld && player->get_weapon_index() != 0) (void)player->try_shoot(bullets, rnd);
 
-        // spawn zombies
+		// spawn zombies
         spawnTimer -= dt;
         if (state == State::Playing && spawnedThisWave < totalThisWave && spawnTimer <= 0.f) {
             if (alive_zombies() < simultaneousCap) {
@@ -553,7 +639,7 @@ public:
             }
         }
 
-        // zombies -> player (no despawn)
+        // zombies -> player
         for (auto& z : zombies) {
             if (z.alive && circle_hit(z.pos, z.radius, player->pos, player->radius)) {
                 if (damageCooldown <= 0.f) {
@@ -563,6 +649,7 @@ public:
                         state = State::GameOver;
                         gameOverAnim = 0.0f;
                         prepare_game_over_ui();
+                        music.stop();   // stop in-game music on death
                     }
                 }
                 Vec2 away = (z.pos - player->pos).normalized();
@@ -662,6 +749,8 @@ private:
     int width{}, height{};
     SDL_Texture* background{};
     SDL_Texture* menuBg{};
+
+    MusicPlayer music;
 
     std::unique_ptr<Player> player;
     std::vector<Zombie> zombies;
@@ -773,13 +862,15 @@ private:
         spawnInterval = std::max(0.20f, 1.0f * std::pow(0.92f, float(wave - 1)));
         zombieSpeed = 90.f * (1.0f + 0.06f * float(wave - 1));
 
-        spawnedThisWave = 0;
-        killedThisWave = 0;
+        spawnedThisWave = 0; 
+        killedThisWave = 0; 
         spawnTimer = 0.25f;
 
         // pickup timers
         ammoSpawnTimer = next_interval(ammoBase);
         healthSpawnTimer = next_interval(healthBase);
+
+        music.play_game();
 
         if (window) {
             std::string t = "CW1 – Top-Down Zombies  |  Wave " + std::to_string(currentWave);
@@ -814,7 +905,7 @@ private:
             "WAVE " + std::to_string(currentWave) + "  SCORE " + std::to_string(score),
             2.0f, SDL_Color{ 230,210,180,255 });
 
-        // buttons
+		// buttons
         float mx = 0.f, my = 0.f; SDL_GetMouseState(&mx, &my);
         auto draw_button = [&](const SDL_FRect& rect, const char* label) {
             bool hover = point_in_rect(mx, my, rect);
@@ -833,7 +924,6 @@ private:
         const float bw = 180.f, bh = 40.f;
         const float cx = width / 2.f - bw / 2.f;
         const float cy = height / 2.f - 5.f;
-
         btnRestart = SDL_FRect{ cx, cy, bw, bh };
         btnMenu = SDL_FRect{ cx, cy + bh + 10.f, bw, bh };
         btnQuit = SDL_FRect{ cx, cy + (bh + 10.f) * 2.f, bw, bh };
@@ -878,7 +968,7 @@ private:
 // main
 int main(int argc, char* argv[]) {
     (void)argc; (void)argv;
-    if (!SDL_Init(SDL_INIT_VIDEO)) {
+    if (!SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO)) {
         SDL_ShowSimpleMessageBox(SDL_MESSAGEBOX_ERROR, "Error", "Error initialising SDL3", nullptr);
         return 1;
     }
