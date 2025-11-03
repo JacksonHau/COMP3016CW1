@@ -1,0 +1,26 @@
+G:/git/COMP3016CW1/COMP3016/COMP3016-CW1/out/install/x64-debug-user/./COMP3016-CW1.exe
+G:/git/COMP3016CW1/COMP3016/COMP3016-CW1/out/install/x64-debug-user/./data/assets/Ammo Crate.png
+G:/git/COMP3016CW1/COMP3016/COMP3016-CW1/out/install/x64-debug-user/./data/assets/Game Menu.png
+G:/git/COMP3016CW1/COMP3016/COMP3016-CW1/out/install/x64-debug-user/./data/assets/Health Box.png
+G:/git/COMP3016CW1/COMP3016/COMP3016-CW1/out/install/x64-debug-user/./data/assets/map.png
+G:/git/COMP3016CW1/COMP3016/COMP3016-CW1/out/install/x64-debug-user/./data/assets/Pistol.png
+G:/git/COMP3016CW1/COMP3016/COMP3016-CW1/out/install/x64-debug-user/./data/assets/Player Down Left.png
+G:/git/COMP3016CW1/COMP3016/COMP3016-CW1/out/install/x64-debug-user/./data/assets/Player Down Right.png
+G:/git/COMP3016CW1/COMP3016/COMP3016-CW1/out/install/x64-debug-user/./data/assets/Player Down.png
+G:/git/COMP3016CW1/COMP3016/COMP3016-CW1/out/install/x64-debug-user/./data/assets/Player Left.png
+G:/git/COMP3016CW1/COMP3016/COMP3016-CW1/out/install/x64-debug-user/./data/assets/Player Right.png
+G:/git/COMP3016CW1/COMP3016/COMP3016-CW1/out/install/x64-debug-user/./data/assets/Player Up Left.png
+G:/git/COMP3016CW1/COMP3016/COMP3016-CW1/out/install/x64-debug-user/./data/assets/Player Up Right.png
+G:/git/COMP3016CW1/COMP3016/COMP3016-CW1/out/install/x64-debug-user/./data/assets/Player Up.png
+G:/git/COMP3016CW1/COMP3016/COMP3016-CW1/out/install/x64-debug-user/./data/assets/Rifle.png
+G:/git/COMP3016CW1/COMP3016/COMP3016-CW1/out/install/x64-debug-user/./data/assets/Shotgun.png
+G:/git/COMP3016CW1/COMP3016/COMP3016-CW1/out/install/x64-debug-user/./data/assets/Zombie Down Left.png
+G:/git/COMP3016CW1/COMP3016/COMP3016-CW1/out/install/x64-debug-user/./data/assets/Zombie Down Right.png
+G:/git/COMP3016CW1/COMP3016/COMP3016-CW1/out/install/x64-debug-user/./data/assets/Zombie Down.png
+G:/git/COMP3016CW1/COMP3016/COMP3016-CW1/out/install/x64-debug-user/./data/assets/Zombie Left.png
+G:/git/COMP3016CW1/COMP3016/COMP3016-CW1/out/install/x64-debug-user/./data/assets/Zombie Right.png
+G:/git/COMP3016CW1/COMP3016/COMP3016-CW1/out/install/x64-debug-user/./data/assets/Zombie Up Left.png
+G:/git/COMP3016CW1/COMP3016/COMP3016-CW1/out/install/x64-debug-user/./data/assets/Zombie Up Right.png
+G:/git/COMP3016CW1/COMP3016/COMP3016-CW1/out/install/x64-debug-user/./data/assets/Zombie Up.png
+G:/git/COMP3016CW1/COMP3016/COMP3016-CW1/out/install/x64-debug-user/./data/sounds/Background Music.wav
+G:/git/COMP3016CW1/COMP3016/COMP3016-CW1/out/install/x64-debug-user/./data/sounds/Menu Music.wav
