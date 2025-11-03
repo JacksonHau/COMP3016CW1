@@ -2,6 +2,9 @@
 ## Overview
 Night of the ZOMBREAK 2D is a 2D survival shooter built in C++ using SDL3 for the Immersive Game Technologies (COMP3016) module. Similar to my game I made for COMP2007, the player must survive against endless waves of zombies, using multiple weapons and pickups while managing ammo and health. This project demonstrates OOP design, file-based asset loading, AI-driven enemy steering, and exception handling in an unmanaged environment.
 
+## Youtube Video
+https://youtu.be/70B9ZlbMfjE
+
 ## Gameplay Description
 - **Objective**: Survive as long as possible against waves of zombies.
 - Controls:
