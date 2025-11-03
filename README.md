@@ -75,3 +75,7 @@ This project successfully demonstrates:
 - Proficiency in unmanaged C++ graphics programming.
 - OOP-based game structure with clean class hierarchy.
 - Integration of AI for creative and assistive coding.
+
+## Music
+Menu Music: https://www.youtube.com/watch?v=HIsU_U0uIqU
+Background Music: https://pixabay.com/sound-effects/be-more-serious-loop-275528
