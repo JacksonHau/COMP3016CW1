@@ -21,7 +21,7 @@
       "VerticalTabListWidth": 256,
       "DocumentGroups": [
         {
-          "DockedHeight": 295,
+          "DockedHeight": 278,
           "SelectedChildIndex": 5,
           "Children": [
             {
@@ -59,7 +59,8 @@
               "RelativeToolTip": "CMakeLists.txt",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003109|",
-              "WhenOpened": "2025-11-03T06:25:56.439Z"
+              "WhenOpened": "2025-11-03T06:25:56.439Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -69,7 +70,7 @@
               "RelativeDocumentMoniker": "COMP3016-CW1\\COMP3016-CW1.cpp",
               "ToolTip": "G:\\git\\COMP3016CW1\\COMP3016\\COMP3016-CW1\\COMP3016-CW1\\COMP3016-CW1.cpp",
               "RelativeToolTip": "COMP3016-CW1\\COMP3016-CW1.cpp",
-              "ViewState": "AgIAALYDAAAAAAAAAAAAAOsAAAAtAAAAAAAAAA==",
+              "ViewState": "AgIAACQBAAAAAAAAAAAtwCkBAAAfAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2025-11-03T02:07:16.872Z",
               "EditorCaption": ""
@@ -77,7 +78,7 @@
           ]
         },
         {
-          "DockedHeight": 105,
+          "DockedHeight": 122,
           "SelectedChildIndex": -1,
           "Children": [
             {

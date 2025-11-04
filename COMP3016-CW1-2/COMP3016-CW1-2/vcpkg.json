@@ -1,0 +1,11 @@
+{
+  "name": "comp3016-cw1-2",
+  "version-string": "1.0.0",
+  "dependencies": [
+    { "name": "sdl3" },
+    {
+      "name": "sdl3-image",
+      "features": [ "png" ]
+    }
+  ]
+}
